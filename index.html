@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="pt-PT" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juilson Fonseca Pandupe | Desenvolvedor Web & Gestão de Sistemas</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        tech: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#0284c7',
+                            600: '#0284c7',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                            dark: '#0b0f19',
+                            card: '#111827',
+                            accent: '#6366f1'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b0f19;
+            color: #f3f4f6;
+        }
+        .glow-effect {
+            box-shadow: 0 0 40px -10px rgba(99, 102, 241, 0.25);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #38bdf8 0%, #6366f1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gradient-border {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        .gradient-border:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            box-shadow: 0 10px 30px -10px rgba(99, 102, 241, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-[#0b0f19] text-gray-100 antialiased selection:bg-indigo-500 selection:text-white min-h-screen flex flex-col justify-between">
+
+    <!-- Header / Navegação -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-[#0b0f19]/80 backdrop-blur-md border-b border-gray-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo / Nome -->
+            <a href="#hero" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-indigo-600 flex items-center justify-center text-white font-bold text-lg shadow-lg group-hover:scale-105 transition-transform">
+                    JP
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-bold text-gray-100 text-base leading-tight">Juilson Pandupe</span>
+                    <span class="text-xs text-cyan-400 font-medium">Gestão & Computação</span>
+                </div>
+            </a>
+
+            <!-- Menu Desktop -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
+                <a href="#sobre" class="hover:text-cyan-400 transition-colors">Sobre Mim</a>
+                <a href="#competencias" class="hover:text-cyan-400 transition-colors">Competências</a>
+                <a href="#projetos" class="hover:text-cyan-400 transition-colors">Projetos</a>
+                <a href="#contacto" class="hover:text-cyan-400 transition-colors">Contacto</a>
+            </nav>
+
+            <!-- Botão Contactar Desktop -->
+            <div class="hidden md:flex items-center gap-4">
+                <a href="#contacto" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-600 text-white font-semibold text-sm shadow-md hover:opacity-95 hover:shadow-indigo-500/20 hover:shadow-lg transition-all transform hover:-translate-y-0.5">
+                    Contactar
+                </a>
+            </div>
+
+            <!-- Botão Menu Mobile -->
+            <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-gray-400 hover:text-white hover:bg-gray-800 transition-colors" aria-label="Abrir Menu">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <!-- Dropdown Mobile -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[#0e1424] border-b border-gray-800 px-4 pt-4 pb-6 space-y-4">
+            <a href="#sobre" class="mobile-nav-link block text-gray-300 hover:text-cyan-400 py-2 font-medium">Sobre Mim</a>
+            <a href="#competencias" class="mobile-nav-link block text-gray-300 hover:text-cyan-400 py-2 font-medium">Competências</a>
+            <a href="#projetos" class="mobile-nav-link block text-gray-300 hover:text-cyan-400 py-2 font-medium">Projetos</a>
+            <a href="#contacto" class="mobile-nav-link block text-gray-300 hover:text-cyan-400 py-2 font-medium">Contacto</a>
+            <a href="#contacto" class="mobile-nav-link block w-full text-center py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-600 text-white font-semibold">
+                Contactar
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow pt-20">
+
+        <!-- Hero Section -->
+        <section id="hero" class="relative py-24 md:py-32 overflow-hidden flex items-center justify-center">
+            <!-- Ambient Glow -->
+            <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-600/15 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute top-1/3 left-1/3 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+                <!-- Badge -->
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-950/60 border border-indigo-500/30 text-indigo-300 text-xs sm:text-sm font-medium mb-8 backdrop-blur-sm">
+                    <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                    Finalista de Licenciatura | Universidade Atlântica
+                </div>
+
+                <!-- Título -->
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-6">
+                    Juilson Fonseca Pandupe
+                </h1>
+                
+                <h2 class="text-xl sm:text-2xl lg:text-3xl font-semibold gradient-text mb-6">
+                    Desenvolvedor Web & Gestor de Sistemas de Informação
+                </h2>
+
+                <!-- Frase de Impacto -->
+                <p class="max-w-3xl mx-auto text-gray-300 text-base sm:text-lg lg:text-xl leading-relaxed mb-10 font-normal">
+                    Conecto a engenharia de software à visão estratégica de gestão de sistemas. Especializado na criação de soluções digitais modernas, seguras e orientadas à otimização de processos de negócio.
+                </p>
+
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+                    <a href="#projetos" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-600 text-white font-semibold shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 hover:scale-[1.02] transition-all flex items-center justify-center gap-2">
+                        <span>Ver Projetos</span>
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#contacto" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gray-900/80 border border-gray-700 text-gray-200 font-semibold hover:bg-gray-800 hover:text-white hover:border-gray-600 transition-all flex items-center justify-center gap-2">
+                        <span>Contactar Agora</span>
+                        <i data-lucide="mail" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sobre Mim -->
+        <section id="sobre" class="py-20 bg-gray-950/50 border-y border-gray-800/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Lado Esquerdo: Card Pessoal -->
+                    <div class="lg:col-span-5 flex justify-center">
+                        <div class="relative w-full max-w-md p-6 rounded-2xl bg-gray-900 gradient-border glow-effect">
+                            <div class="w-24 h-24 mx-auto mb-6 rounded-2xl bg-gradient-to-tr from-cyan-500 to-indigo-600 flex items-center justify-center text-white font-extrabold text-3xl shadow-xl">
+                                JP
+                            </div>
+                            <h3 class="text-xl font-bold text-center text-white mb-1">Juilson Pandupe</h3>
+                            <p class="text-sm text-cyan-400 text-center font-medium mb-6">Lisboa, Portugal</p>
+
+                            <div class="space-y-4 text-sm border-t border-gray-800 pt-6">
+                                <div class="flex items-center justify-between text-gray-300">
+                                    <span class="text-gray-400 flex items-center gap-2"><i data-lucide="graduation-cap" class="w-4 h-4 text-cyan-400"></i> Formação</span>
+                                    <span class="font-semibold text-right">Universidade Atlântica</span>
+                                </div>
+                                <div class="flex items-center justify-between text-gray-300">
+                                    <span class="text-gray-400 flex items-center gap-2"><i data-lucide="book-open" class="w-4 h-4 text-cyan-400"></i> Curso</span>
+                                    <span class="font-semibold text-right">Gestão de Sistemas e Computação</span>
+                                </div>
+                                <div class="flex items-center justify-between text-gray-300">
+                                    <span class="text-gray-400 flex items-center gap-2"><i data-lucide="award" class="w-4 h-4 text-cyan-400"></i> Estatuto</span>
+                                    <span class="font-semibold text-green-400">Finalista (2026)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Lado Direito: Texto Biográfico -->
+                    <div class="lg:col-span-7 space-y-6">
+                        <div class="inline-block text-cyan-400 font-semibold text-sm tracking-wider uppercase">
+                            Sobre a Minha Jornada
+                        </div>
+                        <h2 class="text-3xl sm:text-4xl font-bold text-white">
+                            Engenharia Web aliada à Gestão de Processos e Sistemas
+                        </h2>
+                        <p class="text-gray-300 leading-relaxed text-base sm:text-lg">
+                            Frequento atualmente o último ano da licenciatura em **Gestão de Sistemas e Computação** na **Universidade Atlântica** (Lisboa). O meu percurso académico permitiu-me desenvolver uma perspetiva dupla: a capacidade técnica de programar software robusto e a sensibilidade analítica para gerir sistemas de informação organizacionais.
+                        </p>
+                        <p class="text-gray-300 leading-relaxed text-base sm:text-lg">
+                            Foco-me em resolver problemas complexos através de **tecnologias web**, arquitetura de bases de dados e integração de APIs. Tenho um especial interesse por tecnologias na aprendizagem (eLearning), otimização de plataformas digitais e desenvolvimento Full-Stack responsivo.
+                        </p>
+
+                        <!-- Highlights -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+                            <div class="p-4 rounded-xl bg-gray-900/60 border border-gray-800 flex items-start gap-3">
+                                <div class="p-2 rounded-lg bg-cyan-500/10 text-cyan-400">
+                                    <i data-lucide="code-2" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-white text-sm">Desenvolvimento Web</h4>
+                                    <p class="text-xs text-gray-400 mt-1">Soluções interativas com HTML5, CSS3, JavaScript e PHP.</p>
+                                </div>
+                            </div>
+
+                            <div class="p-4 rounded-xl bg-gray-900/60 border border-gray-800 flex items-start gap-3">
+                                <div class="p-2 rounded-lg bg-indigo-500/10 text-indigo-400">
+                                    <i data-lucide="database" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-white text-sm">Bases de Dados & Backend</h4>
+                                    <p class="text-xs text-gray-400 mt-1">Modelação SQL (MySQL) e programação orientada a objetos (Java).</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Competências Técnicas (Skills) -->
+        <section id="competencias" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Competências Técnicas</h2>
+                    <p class="text-gray-400 text-base sm:text-lg">
+                        Conjunto de linguagens, ferramentas e metodologias aplicadas no desenvolvimento de software e gestão de sistemas.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Card 1: Front-end -->
+                    <div class="p-8 rounded-2xl bg-gray-900 gradient-border flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center mb-6">
+                                <i data-lucide="layout" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-4">Front-end Development</h3>
+                            <p class="text-sm text-gray-400 mb-6">Criação de interfaces web modernas, dinâmicas e focadas na experiência do utilizador (UX/UI).</p>
+                            
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between text-sm font-medium">
+                                    <span class="text-gray-200">HTML5 & CSS3 (Tailwind)</span>
+                                    <span class="text-cyan-400">Avançado</span>
+                                </div>
+                                <div class="w-full h-2 bg-gray-800 rounded-full overflow-hidden">
+                                    <div class="h-full bg-cyan-500 w-11/12 rounded-full"></div>
+                                </div>
+
+                                <div class="flex items-center justify-between text-sm font-medium pt-2">
+                                    <span class="text-gray-200">JavaScript (ES6+)</span>
+                                    <span class="text-cyan-400">Intermédio / Avançado</span>
+                                </div>
+                                <div class="w-full h-2 bg-gray-800 rounded-full overflow-hidden">
+                                    <div class="h-full bg-cyan-400 w-4/5 rounded-full"></div>
+                                </div>
+
+                                <div class="flex items-center justify-between text-sm font-medium pt-2">
+                                    <span class="text-gray-200">UX/UI Design & Responsividade</span>
+                                    <span class="text-cyan-400">Intermédio</span>
+                                </div>
+                                <div class="w-full h-2 bg-gray-800 rounded-full overflow-hidden">
+                                    <div class="h-full bg-cyan-600 w-3/4 rounded-full"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Back-end & DB -->
+                    <div class="p-8 rounded-2xl bg-gray-900 gradient-border flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center mb-6">
+                                <i data-lucide="server" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-4">Back-end & Bases de Dados</h3>
+                            <p class="text-sm text-gray-400 mb-6">Desenvolvimento da lógica de servidor, persistência de dados e serviços web RESTful.</p>
+                            
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between text-sm font-medium">
+                                    <span class="text-gray-200">Java (POO)</span>
+                                    <span class="text-indigo-400">Sólido</span>
+                                </div>
+                                <div class="w-full h-2 bg-gray-800 rounded-full overflow-hidden">
+                                    <div class="h-full bg-indigo-500 w-4/5 rounded-full"></div>
+                                </div>
+
+                                <div class="flex items-center justify-between text-sm font-medium pt-2">
+                                    <span class="text-gray-200">MySQL & SQL Queries</span>
+                                    <span class="text-indigo-400">Avançado</span>
+                                </div>
+                                <div class="w-full h-2 bg-gray-800 rounded-full overflow-hidden">
+                                    <div class="h-full bg-indigo-400 w-11/12 rounded-full"></div>
+                                </div>
+
+                                <div class="flex items-center justify-between text-sm font-medium pt-2">
+                                    <span class="text-gray-200">PHP & Web Services</span>
+                                    <span class="text-indigo-400">Intermédio</span>
+                                </div>
+                                <div class="w-full h-2 bg-gray-800 rounded-full overflow-hidden">
+                                    <div class="h-full bg-indigo-600 w-3/4 rounded-full"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Outros & Gestão -->
+                    <div class="p-8 rounded-2xl bg-gray-900 gradient-border flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center mb-6">
+                                <i data-lucide="cpu" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-4">Sistemas & Ferramentas</h3>
+                            <p class="text-sm text-gray-400 mb-6">Arquitetura de informação, segurança de dados e controlo de versões.</p>
+                            
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between text-sm font-medium">
+                                    <span class="text-gray-200">Git & GitHub</span>
+                                    <span class="text-purple-400">Prático</span>
+                                </div>
+                                <div class="w-full h-2 bg-gray-800 rounded-full overflow-hidden">
+                                    <div class="h-full bg-purple-500 w-4/5 rounded-full"></div>
+                                </div>
+
+                                <div class="flex items-center justify-between text-sm font-medium pt-2">
+                                    <span class="text-gray-200">Análise de Sistemas de Informação</span>
+                                    <span class="text-purple-400">Avançado</span>
+                                </div>
+                                <div class="w-full h-2 bg-gray-800 rounded-full overflow-hidden">
+                                    <div class="h-full bg-purple-400 w-11/12 rounded-full"></div>
+                                </div>
+
+                                <div class="flex items-center justify-between text-sm font-medium pt-2">
+                                    <span class="text-gray-200">Redes & Comunicação de Dados</span>
+                                    <span class="text-purple-400">Conceitos Sólidos</span>
+                                </div>
+                                <div class="w-full h-2 bg-gray-800 rounded-full overflow-hidden">
+                                    <div class="h-full bg-purple-600 w-3/4 rounded-full"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Projetos em Destaque -->
+        <section id="projetos" class="py-20 bg-gray-950/50 border-t border-gray-800/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+                    <div>
+                        <div class="text-cyan-400 font-semibold text-sm tracking-wider uppercase mb-2">Portefólio Prático</div>
+                        <h2 class="text-3xl sm:text-4xl font-bold text-white">Projetos em Destaque</h2>
+                    </div>
+                    <p class="text-gray-400 max-w-md mt-4 md:mt-0 text-sm sm:text-base">
+                        Soluções web desenvolvidas com foco na usabilidade, integridade de dados e boas práticas de programação.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Projeto 1 -->
+                    <div class="rounded-2xl bg-gray-900 border border-gray-800 overflow-hidden flex flex-col justify-between hover:border-gray-700 transition-all group">
+                        <div>
+                            <!-- Imagem / Header do Card -->
+                            <div class="h-48 bg-gradient-to-br from-cyan-900/40 to-indigo-900/40 p-6 flex flex-col justify-between relative overflow-hidden">
+                                <div class="absolute inset-0 bg-gray-950/20"></div>
+                                <div class="relative z-10 flex justify-between items-start">
+                                    <span class="px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-300 text-xs font-semibold backdrop-blur-md border border-cyan-500/30">
+                                        Full-Stack
+                                    </span>
+                                    <i data-lucide="bar-chart-3" class="w-8 h-8 text-cyan-400 opacity-80 group-hover:scale-110 transition-transform"></i>
+                                </div>
+                                <h3 class="relative z-10 text-xl font-bold text-white">Dashboard de Gestão Web</h3>
+                            </div>
+                            
+                            <!-- Conteúdo -->
+                            <div class="p-6">
+                                <p class="text-gray-300 text-sm leading-relaxed mb-6">
+                                    Aplicação web interactiva para monitorização de KPIs organizacionais em tempo real, com sistema de relatórios e autenticação segura.
+                                </p>
+                                <div class="flex flex-wrap gap-2 mb-6">
+                                    <span class="px-2.5 py-1 rounded-md bg-gray-800 text-gray-300 text-xs font-medium">Java</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-gray-800 text-gray-300 text-xs font-medium">MySQL</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-gray-800 text-gray-300 text-xs font-medium">JavaScript</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-gray-800 text-gray-300 text-xs font-medium">HTML/CSS</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Botões -->
+                        <div class="p-6 pt-0 flex items-center justify-between gap-4 border-t border-gray-800/60 mt-auto">
+                            <button onclick="openModal('Dashboard de Gestão Web', 'Uma solução desenvolvida para centralizar métricas empresariais. Inclui controlo de permissões por utilizador, integração direta com MySQL e gráficos interativos no front-end em JavaScript.')" class="text-xs text-cyan-400 font-semibold hover:underline flex items-center gap-1">
+                                <span>Ver Detalhes</span>
+                                <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                            </button>
+                            <a href="https://github.com" target="_blank" rel="noopener" class="text-xs text-gray-400 hover:text-white flex items-center gap-1 font-medium">
+                                <i data-lucide="github" class="w-4 h-4"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Projeto 2 -->
+                    <div class="rounded-2xl bg-gray-900 border border-gray-800 overflow-hidden flex flex-col justify-between hover:border-gray-700 transition-all group">
+                        <div>
+                            <!-- Imagem / Header do Card -->
+                            <div class="h-48 bg-gradient-to-br from-indigo-900/40 to-purple-900/40 p-6 flex flex-col justify-between relative overflow-hidden">
+                                <div class="absolute inset-0 bg-gray-950/20"></div>
+                                <div class="relative z-10 flex justify-between items-start">
+                                    <span class="px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 text-xs font-semibold backdrop-blur-md border border-indigo-500/30">
+                                        eLearning Platform
+                                    </span>
+                                    <i data-lucide="book-open-check" class="w-8 h-8 text-indigo-400 opacity-80 group-hover:scale-110 transition-transform"></i>
+                                </div>
+                                <h3 class="relative z-10 text-xl font-bold text-white">Plataforma de e-Learning</h3>
+                            </div>
+                            
+                            <!-- Conteúdo -->
+                            <div class="p-6">
+                                <p class="text-gray-300 text-sm leading-relaxed mb-6">
+                                    Plataforma adaptada a tecnologias na aprendizagem, com gestão de cursos, submissão de tarefas e acompanhamento de progresso de formandos.
+                                </p>
+                                <div class="flex flex-wrap gap-2 mb-6">
+                                    <span class="px-2.5 py-1 rounded-md bg-gray-800 text-gray-300 text-xs font-medium">PHP</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-gray-800 text-gray-300 text-xs font-medium">JavaScript</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-gray-800 text-gray-300 text-xs font-medium">MySQL</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-gray-800 text-gray-300 text-xs font-medium">UX/UI</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Botões -->
+                        <div class="p-6 pt-0 flex items-center justify-between gap-4 border-t border-gray-800/60 mt-auto">
+                            <button onclick="openModal('Plataforma de e-Learning', 'Protótipo funcional concebido para o setor da aprendizagem digital. Permite gestão dinâmica de módulos em PHP/MySQL e navegação intuitiva em JavaScript responsivo.')" class="text-xs text-indigo-400 font-semibold hover:underline flex items-center gap-1">
+                                <span>Ver Detalhes</span>
+                                <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                            </button>
+                            <a href="https://github.com" target="_blank" rel="noopener" class="text-xs text-gray-400 hover:text-white flex items-center gap-1 font-medium">
+                                <i data-lucide="github" class="w-4 h-4"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Projeto 3 -->
+                    <div class="rounded-2xl bg-gray-900 border border-gray-800 overflow-hidden flex flex-col justify-between hover:border-gray-700 transition-all group">
+                        <div>
+                            <!-- Imagem / Header do Card -->
+                            <div class="h-48 bg-gradient-to-br from-blue-900/40 to-cyan-900/40 p-6 flex flex-col justify-between relative overflow-hidden">
+                                <div class="absolute inset-0 bg-gray-950/20"></div>
+                                <div class="relative z-10 flex justify-between items-start">
+                                    <span class="px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs font-semibold backdrop-blur-md border border-blue-500/30">
+                                        Segurança & API
+                                    </span>
+                                    <i data-lucide="shield-check" class="w-8 h-8 text-blue-400 opacity-80 group-hover:scale-110 transition-transform"></i>
+                                </div>
+                                <h3 class="relative z-10 text-xl font-bold text-white">Gestão de Identidades & Web API</h3>
+                            </div>
+                            
+                            <!-- Conteúdo -->
+                            <div class="p-6">
+                                <p class="text-gray-300 text-sm leading-relaxed mb-6">
+                                    Sistema centralizado para gestão de permissões de utilizadores, autenticação segura e comunicação através de Web APIs.
+                                </p>
+                                <div class="flex flex-wrap gap-2 mb-6">
+                                    <span class="px-2.5 py-1 rounded-md bg-gray-800 text-gray-300 text-xs font-medium">Java</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-gray-800 text-gray-300 text-xs font-medium">REST API</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-gray-800 text-gray-300 text-xs font-medium">JSON</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-gray-800 text-gray-300 text-xs font-medium">SQL</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Botões -->
+                        <div class="p-6 pt-0 flex items-center justify-between gap-4 border-t border-gray-800/60 mt-auto">
+                            <button onclick="openModal('Gestão de Identidades & Web API', 'Projeto focado em boas práticas de segurança cibernética e arquitetura de redes. Validação de credenciais e encriptação de dados de utilizadores.')" class="text-xs text-blue-400 font-semibold hover:underline flex items-center gap-1">
+                                <span>Ver Detalhes</span>
+                                <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                            </button>
+                            <a href="https://github.com" target="_blank" rel="noopener" class="text-xs text-gray-400 hover:text-white flex items-center gap-1 font-medium">
+                                <i data-lucide="github" class="w-4 h-4"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Contacto & Candidaturas -->
+        <section id="contacto" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                    
+                    <!-- Informações de Contacto -->
+                    <div class="lg:col-span-5 space-y-8">
+                        <div>
+                            <div class="text-cyan-400 font-semibold text-sm tracking-wider uppercase mb-2">Contacto Direto</div>
+                            <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Vamos conversar?</h2>
+                            <p class="text-gray-400 text-base leading-relaxed">
+                                Estou disponível para oportunidades profissionais em desenvolvimento web, engenharia de software e projetos de tecnologias na aprendizagem na Grande Lisboa.
+                            </p>
+                        </div>
+
+                        <div class="space-y-4">
+                            <!-- Email -->
+                            <div class="flex items-center gap-4 p-4 rounded-xl bg-gray-900 border border-gray-800">
+                                <div class="w-12 h-12 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center shrink-0">
+                                    <i data-lucide="mail" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs text-gray-400 font-medium">Email Profissional</div>
+                                    <a href="mailto:fonsecapandupejuilson@email.com" class="text-white font-semibold hover:text-cyan-400 transition-colors">fonsecapandupejuilson@email.com</a>
+                                </div>
+                            </div>
+
+                            <!-- Localização -->
+                            <div class="flex items-center gap-4 p-4 rounded-xl bg-gray-900 border border-gray-800">
+                                <div class="w-12 h-12 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center shrink-0">
+                                    <i data-lucide="map-pin" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs text-gray-400 font-medium">Localização</div>
+                                    <div class="text-white font-semibold">Grande Lisboa, Portugal</div>
+                                </div>
+                            </div>
+
+                            <!-- Instituição -->
+                            <div class="flex items-center gap-4 p-4 rounded-xl bg-gray-900 border border-gray-800">
+                                <div class="w-12 h-12 rounded-lg bg-purple-500/10 text-purple-400 flex items-center justify-center shrink-0">
+                                    <i data-lucide="building-2" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs text-gray-400 font-medium">Universidade</div>
+                                    <div class="text-white font-semibold">Universidade Atlântica</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Botão Download CV -->
+                        <div class="pt-4">
+                            <a href="#" onclick="alert('Download simulado do Curriculum Vitae de Juilson Fonseca Pandupe.'); return false;" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-6 py-3.5 rounded-xl bg-indigo-600/20 text-indigo-300 border border-indigo-500/30 font-semibold hover:bg-indigo-600/30 hover:text-white transition-all">
+                                <i data-lucide="download" class="w-5 h-5"></i>
+                                <span>Descarregar Curriculum Vitae (PDF)</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Formulário de Mensagem -->
+                    <div class="lg:col-span-7">
+                        <div class="p-8 rounded-2xl bg-gray-900 border border-gray-800">
+                            <h3 class="text-xl font-bold text-white mb-6">Enviar Mensagem</h3>
+                            <form id="contact-form" class="space-y-6">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                    <div>
+                                        <label for="name" class="block text-xs font-medium text-gray-300 mb-2">Nome Completo</label>
+                                        <input type="text" id="name" required placeholder="Ex.: Maria Santos" class="w-full px-4 py-3 rounded-xl bg-gray-950 border border-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500 transition-colors text-sm">
+                                    </div>
+                                    <div>
+                                        <label for="email" class="block text-xs font-medium text-gray-300 mb-2">Endereço de Email</label>
+                                        <input type="email" id="email" required placeholder="Ex.: maria@empresa.com" class="w-full px-4 py-3 rounded-xl bg-gray-950 border border-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500 transition-colors text-sm">
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label for="subject" class="block text-xs font-medium text-gray-300 mb-2">Assunto</label>
+                                    <input type="text" id="subject" required placeholder="Ex.: Oportunidade Web Developer / Contacto" class="w-full px-4 py-3 rounded-xl bg-gray-950 border border-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500 transition-colors text-sm">
+                                </div>
+
+                                <div>
+                                    <label for="message" class="block text-xs font-medium text-gray-300 mb-2">Mensagem</label>
+                                    <textarea id="message" rows="5" required placeholder="Escreva aqui a sua mensagem..." class="w-full px-4 py-3 rounded-xl bg-gray-950 border border-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500 transition-colors text-sm resize-none"></textarea>
+                                </div>
+
+                                <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-600 text-white font-semibold hover:opacity-95 transition-all shadow-lg shadow-indigo-500/20">
+                                    Enviar Mensagem
+                                </button>
+                            </form>
+
+                            <div id="form-feedback" class="hidden mt-4 p-4 rounded-xl bg-green-500/10 border border-green-500/30 text-green-400 text-sm text-center">
+                                Mensagem enviada com sucesso! Entrarei em contacto em breve.
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Modal Detalhes do Projeto -->
+    <div id="project-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-gray-900 border border-gray-800 rounded-2xl max-w-lg w-full p-6 relative">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            <h3 id="modal-title" class="text-xl font-bold text-white mb-4"></h3>
+            <p id="modal-description" class="text-gray-300 text-sm leading-relaxed mb-6"></p>
+            <div class="flex justify-end">
+                <button onclick="closeModal()" class="px-5 py-2 rounded-xl bg-gray-800 text-white text-sm font-medium hover:bg-gray-700">Fechar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-950 border-t border-gray-800/80 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="text-xs text-gray-400">
+                © 2026 Juilson Fonseca Pandupe. Todos os direitos reservados.
+            </div>
+            <div class="flex items-center gap-6">
+                <a href="https://linkedin.com" target="_blank" rel="noopener" class="text-gray-400 hover:text-cyan-400 text-sm transition-colors flex items-center gap-1">
+                    <i data-lucide="linkedin" class="w-4 h-4"></i> LinkedIn
+                </a>
+                <a href="https://github.com" target="_blank" rel="noopener" class="text-gray-400 hover:text-cyan-400 text-sm transition-colors flex items-center gap-1">
+                    <i data-lucide="github" class="w-4 h-4"></i> GitHub
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts Interativos -->
+    <script>
+        // Inicializar Lucide Icons
+        lucide.createIcons();
+
+        // Toggle do Menu Mobile
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Submissão do Formulário
+        const contactForm = document.getElementById('contact-form');
+        const formFeedback = document.getElementById('form-feedback');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            formFeedback.classList.remove('hidden');
+            contactForm.reset();
+            setTimeout(() => {
+                formFeedback.classList.add('hidden');
+            }, 5000);
+        });
+
+        // Modais de Projeto
+        const modal = document.getElementById('project-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDesc = document.getElementById('modal-description');
+
+        function openModal(title, description) {
+            modalTitle.textContent = title;
+            modalDesc.textContent = description;
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            modal.classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
