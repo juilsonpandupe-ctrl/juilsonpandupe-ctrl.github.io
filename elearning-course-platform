@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduLearn - Plataforma de Cursos Online</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-slate-900 text-slate-100 font-sans min-h-screen flex flex-col justify-between">
+
+    <!-- Header / Navbar -->
+    <header class="border-b border-slate-800 bg-slate-950/80 backdrop-blur sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-lg bg-indigo-600 flex items-center justify-center text-white text-xl font-bold">
+                    <i class="fa-solid font-bold fa-graduation-cap"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold tracking-wide text-white">EduLearn <span class="text-indigo-400 text-xs px-2 py-0.5 rounded bg-indigo-950 border border-indigo-800">LMS</span></h1>
+                    <p class="text-xs text-slate-400">Plataforma de Gestão de Aprendizagem</p>
+                </div>
+            </div>
+            
+            <!-- Barra de Pesquisa -->
+            <div class="relative w-full sm:w-72">
+                <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-slate-400 text-sm"></i>
+                <input type="text" id="searchInput" onkeyup="filterCourses()" placeholder="Pesquisar curso..." class="w-full bg-slate-800 text-sm text-slate-200 pl-9 pr-4 py-2 rounded-lg border border-slate-700 focus:outline-none focus:border-indigo-500">
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-4 py-8 flex-grow w-full">
+        
+        <!-- Banner de Boas-Vindas -->
+        <section class="bg-gradient-to-r from-indigo-900 to-slate-800 rounded-2xl p-6 sm:p-8 mb-8 border border-indigo-800/50 shadow-xl">
+            <div class="max-w-2xl">
+                <span class="text-xs font-semibold uppercase tracking-wider text-indigo-400 bg-indigo-950/80 border border-indigo-700/50 px-3 py-1 rounded-full">Painel do Formando</span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-3">Desenvolva as suas competências digitais</h2>
+                <p class="text-slate-300 text-sm sm:text-base mt-2">Aceda aos seus módulos de aprendizagem, acompanhe o seu progresso e conclua certificações técnicas.</p>
+            </div>
+        </section>
+
+        <!-- Filtros por Categoria -->
+        <div class="flex items-center gap-2 mb-6 overflow-x-auto pb-2">
+            <button onclick="filterCategory('all')" class="cat-btn active bg-indigo-600 text-white text-xs font-semibold px-4 py-2 rounded-lg transition">Todos</button>
+            <button onclick="filterCategory('Web')" class="cat-btn bg-slate-800 text-slate-300 text-xs font-semibold px-4 py-2 rounded-lg hover:bg-slate-700 transition">Desenvolvimento Web</button>
+            <button onclick="filterCategory('Security')" class="cat-btn bg-slate-800 text-slate-300 text-xs font-semibold px-4 py-2 rounded-lg hover:bg-slate-700 transition">Segurança & IAM</button>
+            <button onclick="filterCategory('Database')" class="cat-btn bg-slate-800 text-slate-300 text-xs font-semibold px-4 py-2 rounded-lg hover:bg-slate-700 transition">Bases de Dados</button>
+        </div>
+
+        <!-- Lista de Cursos -->
+        <div id="coursesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Gerado via JavaScript -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 bg-slate-950 py-6">
+        <div class="max-w-6xl mx-auto px-4 text-center text-xs text-slate-500">
+            <p>© 2026 EduLearn LMS • Projetado por <span class="text-indigo-400 font-semibold">Juilson Fonseca Pandupe</span></p>
+            <p class="mt-1">Licenciatura em Gestão de Sistemas e Computação — Universidade Atlântica</p>
+        </div>
+    </footer>
+
+    <!-- Script JS -->
+    <script>
+        const courses = [
+            {
+                id: 1,
+                title: "Desenvolvimento Web com JavaScript ES6+",
+                category: "Web",
+                instructor: "Prof. Carlos Silva",
+                lessons: 12,
+                progress: 75,
+                icon: "fa-brands fa-js",
+                color: "text-amber-400"
+            },
+            {
+                id: 2,
+                title: "Arquitetura de Bases de Dados Relacionais & MySQL",
+                category: "Database",
+                instructor: "Eng.ª Maria Santos",
+                lessons: 10,
+                progress: 40,
+                icon: "fa-solid fa-database",
+                color: "text-blue-400"
+            },
+            {
+                id: 3,
+                title: "Gestão de Identidades e Acessos (IAM) na Prática",
+                category: "Security",
+                instructor: "Dr. Juilson Pandupe",
+                lessons: 8,
+                progress: 100,
+                icon: "fa-solid fa-user-shield",
+                color: "text-emerald-400"
+            },
+            {
+                id: 4,
+                title: "Fundamentos de PHP e Serviços RESTful",
+                category: "Web",
+                instructor: "Eng. Pedro Costa",
+                lessons: 15,
+                progress: 20,
+                icon: "fa-brands fa-php",
+                color: "text-indigo-400"
+            },
+            {
+                id: 5,
+                title: "Sistemas Distribuídos & Infraestrutura Cloud",
+                category: "Security",
+                instructor: "Prof. António Ferreira",
+                lessons: 14,
+                progress: 60,
+                icon: "fa-solid fa-server",
+                color: "text-purple-400"
+            }
+        ];
+
+        let selectedCategory = 'all';
+
+        function renderCourses(data) {
+            const grid = document.getElementById('coursesGrid');
+            grid.innerHTML = '';
+
+            if(data.length === 0) {
+                grid.innerHTML = `<p class="col-span-full text-center text-slate-500 py-12">Nenhum curso encontrado com estes critérios.</p>`;
+                return;
+            }
+
+            data.forEach(course => {
+                const card = document.createElement('div');
+                card.className = "bg-slate-800/80 border border-slate-700/60 rounded-xl p-5 hover:border-indigo-500/50 transition flex flex-col justify-between shadow-lg";
+                card.innerHTML = `
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-12 h-12 rounded-lg bg-slate-900 border border-slate-700 flex items-center justify-center text-2xl ${course.color}">
+                                <i class="${course.icon}"></i>
+                            </div>
+                            <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-900 border border-slate-700 text-slate-300">${course.category}</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2 leading-snug">${course.title}</h3>
+                        <p class="text-xs text-slate-400 mb-4"><i class="fa-solid fa-chalkboard-user mr-1"></i> ${course.instructor} • ${course.lessons} Aulas</p>
+                    </div>
+
+                    <div>
+                        <div class="mb-3">
+                            <div class="flex justify-between text-xs text-slate-400 mb-1">
+                                <span>Progresso</span>
+                                <span class="font-semibold text-indigo-400">${course.progress}%</span>
+                            </div>
+                            <div class="w-full bg-slate-900 h-2 rounded-full overflow-hidden">
+                                <div class="bg-indigo-500 h-full rounded-full" style="width: ${course.progress}%"></div>
+                            </div>
+                        </div>
+                        <button onclick="enrollAlert('${course.title}')" class="w-full bg-indigo-600/20 hover:bg-indigo-600 text-indigo-300 hover:text-white border border-indigo-500/30 font-semibold text-xs py-2 rounded-lg transition">
+                            ${course.progress === 100 ? 'Revisar Conteúdo' : 'Continuar Módulo'}
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function filterCourses() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = courses.filter(c => {
+                const matchCategory = selectedCategory === 'all' || c.category === selectedCategory;
+                const matchSearch = c.title.toLowerCase().includes(query) || c.instructor.toLowerCase().includes(query);
+                return matchCategory && matchSearch;
+            });
+            renderCourses(filtered);
+        }
+
+        function filterCategory(cat) {
+            selectedCategory = cat;
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.classList.remove('bg-indigo-600', 'text-white');
+                btn.classList.add('bg-slate-800', 'text-slate-300');
+            });
+            event.target.classList.remove('bg-slate-800', 'text-slate-300');
+            event.target.classList.add('bg-indigo-600', 'text-white');
+            filterCourses();
+        }
+
+        function enrollAlert(title) {
+            alert(`Aceder ao módulo: "${title}"\n\nEste é um projeto demonstrativo de eLearning LMS.`);
+        }
+
+        // Inicializar
+        renderCourses(courses);
+    </script>
+</body>
+</html>
